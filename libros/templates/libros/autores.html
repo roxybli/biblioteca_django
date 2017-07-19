@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Autor {% endblock %}
+
+{% block content %} 
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">Opciones</p>
+                <div class="list-group">
+                     <a href="{% url 'biblioteca:autores' %}" class="list-group-item active">Existentes</a>
+                    <a href="{% url 'biblioteca:agregarAutor' %}" class="list-group-item">Agregar</a>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                {% if autores %}
+                <h3>Autores existentes </h3>
+                <hr>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOMBRE</th>
+                            <th>APELLIDOS</th>
+                            <th>CORREO</th>
+                            <th colspan='2'>ACCION</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for autor in autores %}
+                       <tr>
+                            <td>{{ autor.id }}</td>
+                            <td>{{ autor.nombre }}</td>
+                            <td>{{ autor.apellido }}</td>
+                            <td>{{ autor.correo }}</td>
+                            <td><a href="{% url 'biblioteca:eliminarAutor' autor.id %}" class="glyphicon glyphicon-remove text-danger"></a></td>
+                            <td><a href="{% url 'biblioteca:actualizarAutor' autor.id %}" class="glyphicon glyphicon-edit text-success"></a></td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                <h2>No hay ningun autor registrado</h2>
+                {% endif %}
+                    </tbody>
+                </table>
+                    
+            </div>
+
+        </div>
+{% endblock %}

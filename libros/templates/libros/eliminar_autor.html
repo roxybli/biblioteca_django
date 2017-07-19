@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Autor {% endblock %}
+
+{% block content %}
+		<hr>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger btn-lg">Eliminar Autor</button>
+            <a href="{% url 'biblioteca:autores' %}" class="btn btn-success btn-lg">Cancelar</a>
+        </form>
+{% endblock %}

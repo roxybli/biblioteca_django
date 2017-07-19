@@ -1,0 +1,22 @@
+
+{% extends 'base/base.html' %}
+
+{% block content %} 
+{% if libros %}
+{% for libro in libros %}
+                    
+  <div class="col-md-3 libro">
+    <h4 class="text-success">{{ libro.titulo }}</h4>
+    <img src="{{ libro.portada.url }}" width="150" height="150">
+    <h5><strong>Autor:</strong>
+    {% for i in libro.autores.all %}
+    {{ i.nombre }}
+    {{ i.apellido }}<br>
+    {% endfor%}</h5>
+    <h5><strong>Editorial: </strong>{{ libro.editor }}</h5>
+    <h5><strong>Precio: </strong>${{ libro.precio }}</h5>
+  </div>                
+{% endfor %}
+{% endif %}
+{% endblock %}
+

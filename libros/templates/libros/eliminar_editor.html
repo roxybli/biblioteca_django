@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Editor {% endblock %}
+
+{% block content %} 
+        <div class="row">
+        	<hr>
+            <form method="post">
+                {% csrf_token %}
+                <button class="btn btn-danger btn-lg">Eliminar Editor</button>
+                <a href="{% url 'biblioteca:editoriales' %}" class="btn btn-success btn-lg">Cancelar</a>
+            </form>
+
+        </div>
+{% endblock %}

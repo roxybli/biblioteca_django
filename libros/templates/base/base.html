@@ -1,0 +1,74 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %} Inicio {% endblock %} </title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet"> 
+    <link href="{% static 'css/estilos.css' %}" rel="stylesheet"> 
+
+</head>
+
+<body>
+ <div class="container">
+
+{% block header %} 
+<nav class="navbar navbar-inverse" role="navigation">
+                <a class="navbar-brand" href="{% url 'biblioteca:inicio' %}">Biblioteca</a>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="{% url 'biblioteca:inicio' %}">Inicio</a>
+                    </li>
+                    <li class="active">
+                        <a href="{% url 'biblioteca:librosExistentes' %}">Libros</a> 
+                    </li>
+                    <li class="active">
+                        <a href="{% url 'biblioteca:autores' %}">Autores</a>
+                    </li>
+                    <li class="active">
+                        <a href="{% url 'biblioteca:editoriales' %}">Editoriales</a>
+                    </li>
+                </ul>
+            </div>
+    </nav>
+{% endblock %}
+
+{% block content %} {% endblock %}
+
+{% block footer %} 
+  <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Biblioteca 2017</p>
+                </div>
+            </div>
+        </footer>
+        
+{% endblock %}
+
+    
+
+
+
+      
+
+    </div>
+    <script src="{% static 'js/jquery.js' %}"></script> 
+    <script src="{% static 'js/bootstrap.js' %}"></script> 
+
+</body>
+
+</html>

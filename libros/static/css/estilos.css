@@ -1,0 +1,23 @@
+body{
+	background: #bfc6c4
+}
+thead{
+	background: #74acbe
+}
+tbody{
+	background: #a1b7be
+}
+table{
+	margin-top: 15px
+}
+#aside{
+	background: #a1b7be
+}
+.formulario{
+	margin-top: 15px
+}
+.libro:hover{
+	background-color: #9C93FF;
+	border-radius: 5px;
+	box-shadow: 2px 2px 15px #000; 
+}

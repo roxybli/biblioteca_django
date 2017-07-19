@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Libro {% endblock %}
+
+{% block content %}
+	<form method="post">
+		{% csrf_token%}
+
+		<h3>Desea eliminar los datos del Libro </h3>
+		<hr>
+
+		<button class="btn btn-danger btn-lg" type="submit">Si, Eliminar</button>
+		<a href="{% url 'biblioteca:librosExistentes' %}" class="btn btn-success btn-lg">Cancelar</a>
+	</form>
+
+{% endblock%}

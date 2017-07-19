@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Libro {% endblock %}
+
+{% block content %} 
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">Opciones</p>
+                <div class="list-group">
+                    <a href="{% url 'biblioteca:librosExistentes' %}" class="list-group-item">Existentes</a>
+                    <a href="{% url 'biblioteca:insertarLibro' %}" class="list-group-item">Agregar</a>
+                    <a href="{% url 'biblioteca:buscarLibro' %}" class="list-group-item active">Buscar</a>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <h3>Busqueda de libros</h3>
+                <hr>
+                <form method="post" action="{% url 'biblioteca:resultadoLibro' %}">
+                {% csrf_token %}
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" name="libro" placeholder="Libro a Buscar" required>
+                    </div>  
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary">Buscar Libro</button>
+                    </div>                  
+                </form>
+            </div>
+        </div>
+{% endblock %}

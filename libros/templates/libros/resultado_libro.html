@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Libro {% endblock %}
+
+{% block content %} 
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">Opciones</p>
+                <div class="list-group">
+                    <a href="{% url 'biblioteca:librosExistentes' %}" class="list-group-item">Existentes</a>
+                    <a href="{% url 'biblioteca:insertarLibro' %}" class="list-group-item">Agregar</a>
+                    <a href="{% url 'biblioteca:buscarLibro' %}" class="list-group-item">Buscar</a>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                {% if libros %}
+                <h3>{{ libros |length }} Resultados para <strong>{{ busqueda }}</strong></h3>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>TITULO</th>
+                            <th>FECHA DE PUBLICACION</th>
+                            <th>AUTORES</th>
+                            <th>EDITORIAL</th>
+                            <th>PORTADA</th>
+                            <th colspan='2'>ACCION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {% for libro in libros %}
+                        <tr>
+                            <td>{{ libro.id }}</td>
+                            <td>{{ libro.titulo }}</td>
+                            <td>{{ libro.fecha_publicacion }}</td>
+                            <td>
+                            {% for i in libro.autores.all %}
+                            {{ i.nombre }}
+                            {{ i.apellido }}<br>
+                            {% endfor%}
+                            </td>
+                            <td>{{ libro.editor }}</td>
+                            <td><img src="{{ libro.portada.url }}" width="50" height="50"></td>
+                            <td><a href="{% url 'biblioteca:eliminarLibro' libro.id %}" class="glyphicon glyphicon-remove text-danger"></a></td>
+                            <td><a href="{% url 'biblioteca:actualizarLibro' libro.id %}" class="glyphicon glyphicon-edit text-success"></a></td>
+                        </tr>
+            {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <h2>No hay resultados para <strong>{{ busqueda}}</strong></h2>
+                {% endif %}
+            </div>
+        </div>
+{% endblock %}

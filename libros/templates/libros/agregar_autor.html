@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Autor {% endblock %}
+
+{% block content %} 
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">Opciones</p>
+                <div class="list-group">
+                    <a href="{% url 'biblioteca:autores' %}" class="list-group-item">Existentes</a>
+                    <a href="{% url 'biblioteca:agregarAutor' %}" class="list-group-item active">Agregar</a>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <h3>Datos del autor</h3>
+                <hr>
+               <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary btn-lg">Insertar Autor</button>
+               </form>
+                    
+            </div>
+
+        </div>
+{% endblock %}

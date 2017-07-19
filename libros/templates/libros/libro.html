@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Libro {% endblock %}
+
+{% block content %} 
+    <div class="container">
+        <h3><strong>Datos del Libro </strong></h3>
+        <hr>
+        <div class="col-md-6">
+            <p><h4><strong>Titulo: </strong>  {{libro.titulo}} </h4></p>           
+            <p><h4><strong>Fecha de publicacion:</strong>  {{libro.fecha_publicacion}} </h4></p>           
+            <p><h4><strong>Precio:</strong> ${{libro.precio}} </h4></p>           
+            <p><h4><strong>Autor: </strong>  {% for i in libro.autores.all %}
+                            {{ i.nombre }}
+                            {{ i.apellido }},
+                            {% endfor%}</h4></p>           
+            <p><h4><strong>Editorial: </strong>  {{ libro.editor }} </h4></p>           
+            <p><h4><strong>Descripcion: </strong> <br> {{libro.descripcion}} </h4></p>           
+        </div>
+
+        <div class="col-md-6">        
+            <img src="{{ libro.portada.url }}" width="250" height="250">           
+        </div>
+        <a href="{% url 'biblioteca:librosExistentes' %}" class="btn btn-success btn-lg col-md-12">Regresar</a>
+     </div>
+{% endblock %}
